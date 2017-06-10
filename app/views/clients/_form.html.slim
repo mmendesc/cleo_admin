@@ -1,0 +1,41 @@
+= form_for @client do |f|
+
+  = f.label 'Nome'
+  = f.text_field :name
+  br
+
+  = f.label 'E-mail'
+  = f.text_field :email
+  br
+
+  = f.label 'Telefone'
+  = f.text_field :telephone
+  br
+  = f.label 'Celular'
+  = f.text_field :cellphone
+  br
+
+  = f.label 'CEP'
+  = f.text_field :zipcode
+  br
+
+  = f.label 'Número'
+  = f.number_field :number
+  br
+
+  = f.label 'CPF'
+  = f.text_field :cpf
+  br
+
+  = f.label 'Anivérsario'
+  = f.date_select :birthday
+  br
+
+  = f.label 'Sexo'
+  = f.number_field :sex
+  br
+
+  = f.label 'Bairro'
+  = f.text_field :district
+
+  = f.submit 'Criar'
