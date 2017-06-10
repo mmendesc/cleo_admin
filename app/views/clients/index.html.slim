@@ -1,1 +1,23 @@
-= @clients.size
+table.table.table-striped.table-bordered.table-hover.table-checkable.order-column#dtable
+  thead
+    tr
+      th Nome
+      th E-mail
+      th Telefone
+      th Celular
+      th Aniversário
+      th Sexo
+      th CEP
+  tbody
+    - @clients.each do |client|
+      tr
+        td = link_to "#{client.name}", client
+        td = client.email
+        td = client.telephone
+        td = client.cellphone
+        td = client.birthday
+        td = client.sex
+        td = client.zipcode
+
+
+
