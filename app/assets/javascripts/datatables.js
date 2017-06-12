@@ -1,4 +1,4 @@
-jQuery(function() {
+$(document).on('turbolinks:load',function() {
   jQuery('#dtable').DataTable({
     language: {
         "sEmptyTable": "Nenhum registro encontrado",
