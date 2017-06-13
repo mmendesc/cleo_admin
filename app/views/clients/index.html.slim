@@ -9,6 +9,7 @@ table.table.table-striped.table-bordered.table-hover.table-checkable.order-colum
       th Aniversário
       th Sexo
       th CEP
+      th Apagar
   tbody
     - @clients.each do |client|
       tr
@@ -19,6 +20,7 @@ table.table.table-striped.table-bordered.table-hover.table-checkable.order-colum
         td = client.birthday
         td = client.sex
         td = client.zipcode
-
+        td style="text-align:center"
+          = link_to 'X', client_path(client), method: :delete, data: {confirm: 'Deseja apagar esse cliente?'}
 
 
