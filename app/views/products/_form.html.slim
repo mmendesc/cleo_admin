@@ -1,0 +1,33 @@
+= form_for @product do |f|
+  = f.label 'Nome'
+  = f.text_field :name
+  br
+
+  = f.label 'Preço'
+  = f.number_field :price
+  br
+
+  = f.label 'Quantidade'
+  = f.number_field :quantity
+  br
+
+  span
+    = f.label 'Fabricante'
+    span
+      = f.collection_select :manufacturer_id, Manufacturer.all , :id,:name, {prompt: "Selecione o fabricante"}
+      button.btn.btn-info data-target="#myModal" data-toggle="modal" type="button"  Adicionar Fabricante
+  br
+  = f.submit 'Adicionar Produto'
+/! Modal
+#myModal.modal.fade role="dialog"
+  .modal-dialog
+    /! Modal content
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"  &times;
+        h4.modal-title Adicionar Fabricante
+      .modal-body
+        = render 'manufacturers/form'
+      .modal-footer
+        button.btn.btn-default data-dismiss="modal" type="button"  Cancelar
+

@@ -1,0 +1,15 @@
+= link_to 'Novo Produto', new_product_path
+table.table.table-striped.table-bordered.table-hover.table-checkable.order-column#dtable
+  thead
+    tr
+      th Nome
+      th Preço
+      th Quantidade
+      th Fabricante
+  tbody
+    - @products.each do |product|
+      tr
+        td = link_to "#{product.name}", product
+        td = product.price
+        td = product.quantity
+        td = product.manufacturer_name
