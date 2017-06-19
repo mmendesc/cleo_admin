@@ -12,14 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require datatables/js/jquery.dataTables.min
 //= require datatables/js/dataTables.bootstrap.min
 //= require dashgum/js/jquery-ui-1.9.2.custom.min
 //= require dashgum/js/jquery.ui.touch-punch.min
-//= require dashgum/js/jquery.dcjqaccordion.2.7
-//= require dashgum/js/jquery.scrollTo.min
-//= require dashgum/js/jquery.nicescroll
 //= require dashgum/js/bootstrap.min
-//= require dashgum/js/common-scripts.js
+//= require dashgum/js/jquery.nicescroll
+//= require turbolinks
 //= require_tree .

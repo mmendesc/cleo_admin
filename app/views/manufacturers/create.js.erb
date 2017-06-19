@@ -1,2 +1,5 @@
 $('#myModal').modal('hide');
+$(".modal-backdrop").remove();
+$('#myModal').removeClass('in');
 $('#product_manufacturer_id').html("<%= escape_javascript options_from_collection_for_select(@manufacturers, :id, :name) %>");
+
