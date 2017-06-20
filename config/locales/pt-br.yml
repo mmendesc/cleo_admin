@@ -1,0 +1,74 @@
+pt-BR:
+  language_name: Português do Brasil
+
+  date:
+    order: ["day", "year",  "month"]
+    abbr_day_names:
+    - Dom
+    - Seg
+    - Ter
+    - Qua
+    - Qui
+    - Sex
+    - Sáb
+    abbr_month_names:
+      -
+      - Janeiro
+      - Fevereiro
+      - Março
+      - Abril
+      - Maio
+      - Junho
+      - Julho
+      - Agosto
+      - Setembro
+      - Outubro
+      - Novembro
+      - Dezembro
+    day_names:
+    - Domingo
+    - Segunda
+    - Terça
+    - Quarta
+    - Quinta
+    - Sexta
+    - Sábado
+    month_names:
+      January: Janeiro
+      February: Fevereiro
+      March: Março
+      April: Abril
+      May: Maio
+      June: Junho
+      July: Julho
+      August: Agosto
+      September: Setembro
+      October: Outubro
+      November: Novembro
+      December: Dezembro
+    month_names_number:
+      01: Janeiro
+      02: Fevereiro
+      03: Março
+      04: Abril
+      05: Maio
+      06: Junho
+      07: Julho
+      08: Agosto
+      09: Setembro
+      10: Outubro
+      11: Novembro
+      12: Dezembro
+
+  controllers:
+    products:
+      new: Cadastro de Produtos
+      index: Lista de Produtos
+      show: Produto
+      edit: Editar Produto
+
+    clients:
+      new: Cadastro de Clientes
+      index: Lista de Clientes
+      show: Cliente
+      edit: Editar Cliente

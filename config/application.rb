@@ -12,5 +12,10 @@ module CleoAdmin
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.assets.paths << Rails.root.join('vendor', 'assets', 'plugins')
+
+    config.time_zone = 'Brasilia'
+    config.i18n.default_locale = "pt-BR"
+    config.i18n.available_locales = [:en, "pt-BR"]
+    config.encoding = "utf-8"
   end
 end

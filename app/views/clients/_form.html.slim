@@ -1,41 +1,63 @@
-= form_for @client do |f|
+.row.mt
+  .col-lg-1.col-md-0.col-sm-0
+  .col-lg-10.col-md-11.col-sm-12
+    .form-panel
 
-  = f.label 'Nome'
-  = f.text_field :name
-  br
+      = form_for @client, html: { class: "form-horizontal style-form"} do |f|
+        .form-group
+          = f.label 'Nome', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :name, class: 'name form-control', required: true
 
-  = f.label 'E-mail'
-  = f.text_field :email
-  br
+          = f.label 'E-mail', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :email, class: 'email form-control', required: true
 
-  = f.label 'Telefone'
-  = f.text_field :telephone
-  br
-  = f.label 'Celular'
-  = f.text_field :cellphone
-  br
+        .form-group
+          = f.label 'Telefone', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :telephone, class: 'cellphone form-control'
 
-  = f.label 'CEP'
-  = f.text_field :zipcode
-  br
+          = f.label 'Celular', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :cellphone, class: 'cellphone form-control'
 
-  = f.label 'Número'
-  = f.number_field :number
-  br
+        .form-group
+          = f.label 'CEP', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :zipcode, class: 'cep form-control'
 
-  = f.label 'CPF'
-  = f.text_field :cpf
-  br
+          = f.label 'Número', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.number_field :number, class: 'address_number form-control'
 
-  = f.label 'Anivérsario'
-  = f.date_select :birthday
-  br
+        .form-group
+          = f.label 'Rua', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :street, class: 'street form-control'
 
-  = f.label 'Sexo'
-  = f.number_field :sex
-  br
+          = f.label 'CPF', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :cpf, class: 'cpf form-control'
 
-  = f.label 'Bairro'
-  = f.text_field :district
+        .form-group
+          = f.label 'Anivérsario', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :birthday, class: 'birthday form-control'
 
-  = f.submit 'Criar'
+          = f.label 'Sexo', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = radio_button_tag 'sex', 'male', true, class: 'input-cadastro-radio'
+            = label_tag(:male, 'Masculino', class: 'span-masc')
+            = radio_button_tag 'sex', 'female', false, class: 'input-cadastro-radio'
+            = label_tag(:female, 'Feminino', class: 'span-masc')
+
+        .form-group
+          = f.label 'Bairo', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :district, class: 'address_neigh form-control'
+
+
+        .form-group
+          .col-lg-12.col-md-12.col-sm-12
+            = f.submit 'Criar', class: 'btn btn-primary btn-lg btn-block'

@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :set_product, except: [:index,:new,:create]
+  before_action :set_page_name, except: [:create,:update,:destroy]
 
   def index
     @products = Product.all
@@ -52,5 +53,9 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name,:price,:quantity,:manufacturer_id)
+  end
+
+  def set_page_name
+    @page = t(params[:action], scope: 'controllers.products')
   end
 end
