@@ -72,3 +72,15 @@ pt-BR:
       index: Lista de Clientes
       show: Cliente
       edit: Editar Cliente
+
+    categories:
+      new: Cadastro de Categorias
+      index: Lista de Categorias
+      show: Categoria
+      edit: Editar Categoria
+
+    services:
+      new: Cadastro de Serviços
+      index: Lista de Serviços
+      show: Serviço
+      edit: Editar Serviço

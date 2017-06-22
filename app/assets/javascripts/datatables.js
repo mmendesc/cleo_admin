@@ -22,7 +22,7 @@ $(document).on('turbolinks:load',function() {
         "searching": true,
     },
     "bSort": false,
-    "bDestroy": true,
+    "destroy": true,
     "aaSorting": [[ 0, "desc" ]],
     columnDefs: [
       { orderable: false, targets: -1 }

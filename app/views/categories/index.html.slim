@@ -1,0 +1,12 @@
+= link_to 'Nova Categoria', new_category_path
+table#dtable.table.table-striped.table-bordered.table-hover.table-checkable.order-column
+  thead
+    tr
+      th Nome
+      th Apagar
+  tbody
+    - @categories.each do |category|
+      tr
+        td = link_to "#{category.name}", category
+        td style="text-align:center"
+          = link_to 'X', category_path(category), method: :delete, data: {confirm: 'Deseja apagar essea categoria?'}
