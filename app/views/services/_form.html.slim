@@ -21,11 +21,11 @@
         .form-group
           = f.label 'Horas', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
           .col-lg-5.col-md-10.col-sm-9
-            = f.text_field :hours, class: 'cellphone form-control'
+            = f.number_field :hours, class: 'cellphone form-control'
 
           = f.label 'Minutos', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
           .col-lg-5.col-md-10.col-sm-9
-            = f.text_field :minutes, class: 'cellphone form-control'
+            = f.number_field :minutes, class: 'cellphone form-control'
 
           br
         = f.submit 'Adicionar Produto', class: 'btn btn-primary btn-lg btn-block'

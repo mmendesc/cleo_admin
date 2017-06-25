@@ -11,9 +11,8 @@ table#dtable.table.table-striped.table-bordered.table-hover.table-checkable.orde
     - @services.each do |service|
       tr
         td = link_to "#{service.name}", service
-        td = service.email
         td = service.price
-        td = service.hours
-        td = service.category_id
+        td = "#{service.hours}:#{service.minutes}"
+        td = service.category_name
         td style="text-align:center"
           = link_to 'X', service_path(service), method: :delete, data: {confirm: 'Deseja apagar esse serviço?'}

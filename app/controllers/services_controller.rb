@@ -31,7 +31,7 @@ class ServicesController < ApplicationController
   def update
     @service = Service.find(params[:id])
     if @service.update_attributes(service_params)
-      redirect_to @service
+      redirect_to services_path
     else
       redirect_to :back
     end
