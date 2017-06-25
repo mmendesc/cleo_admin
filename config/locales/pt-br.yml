@@ -84,3 +84,9 @@ pt-BR:
       index: Lista de Serviços
       show: Serviço
       edit: Editar Serviço
+
+    employees:
+      new: Cadastro de Funcionários
+      index: Lista de Funcionários
+      show: Funcionário
+      edit: Editar Funcionário

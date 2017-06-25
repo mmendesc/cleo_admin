@@ -51,7 +51,7 @@ html
                 span Clientes
 
             li.sub-menu
-              a href="javascript:;"
+              a href="/employees"
                 i.fa.fa-cogs
                 span Funcionários
               ul.sub
@@ -99,6 +99,7 @@ html
       /! main content start
       section#main-content
         section.wrapper.site-min-height
+          = render 'layouts/messages'
           h3
             i.fa.fa-angle-right
             | #{@page}
