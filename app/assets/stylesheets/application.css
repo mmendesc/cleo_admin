@@ -16,5 +16,6 @@
  *= require datatables/css/dataTables.foundation
  *= require dashgum/css/style
  *= require dashgum/css/style-responsive
+ *= require bootstrap-timepicker/css/bootstrap-timepicker.min
  *= require_self
  */

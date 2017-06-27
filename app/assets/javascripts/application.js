@@ -19,5 +19,10 @@
 //= require dashgum/js/jquery.ui.touch-punch.min
 //= require dashgum/js/bootstrap.min
 //= require dashgum/js/jquery.nicescroll
+//= require jqueryweekline/jquery.weekline
+//= require bootstrap-datepicker/js/bootstrap-datepicker.min
+//= require bootstrap-timepicker/js/bootstrap-timepicker
+//= require advanced-form-components
+
 //= require turbolinks
 //= require_tree .
