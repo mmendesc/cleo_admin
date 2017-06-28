@@ -17,5 +17,6 @@ module CleoAdmin
     config.i18n.default_locale = "pt-BR"
     config.i18n.available_locales = [:en, "pt-BR"]
     config.encoding = "utf-8"
+    config.active_record.time_zone_aware_types = [:datetime, :time]
   end
 end

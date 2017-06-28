@@ -53,7 +53,8 @@ class EmployeesController < ApplicationController
 
   def employee_params
     params.require(:employee).permit(:name,:email,:telephone,:cellphone,:zipcode,:number,:street,:cpf,:birthdate,
-      :identity,:password,:password_confirmation,:gender,:work_paper,:role)
+      :identity,:password,:password_confirmation,:gender,:work_paper,:role, contract_attributes: [:id,:start_date,:end_date,:start_time,:end_time,:employee_id,
+        intervals_attributes: [:id,:start_time,:end_time,:contract_id]])
   end
 
   def set_page_name

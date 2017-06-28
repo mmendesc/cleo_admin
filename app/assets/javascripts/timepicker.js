@@ -57,6 +57,22 @@ $(document).on('turbolinks:load',function() {
     explicitMode:true
   });
 
-  $('.date-picker').datepicker();
+  $('.timepicker').each(function (){
+    $(this).timepicker({
+      defaultTime: 'value',
+      showInputs: false,
+      minuteStep: 5,
+      showSeconds: false,
+      showMeridian: false,
+      pickDate: false,
+      disableFocus:false,
+      explicitMode:true
+    });
+  })
+
+  $('.date-picker').datepicker({
+    autoclose: true,
+  });
+
 
 });

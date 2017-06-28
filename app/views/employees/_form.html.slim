@@ -72,58 +72,64 @@
         .form-group
           = f.label 'Tipo', class: 'col-lg-2 col-md-2 col-sm-3 control-label'
           .col-lg-9.col-md-9.col-sm-9.select-editable
-            = f.select :role, [['Secretário','secretary'],['Funcionário','worker']] , class: 'form-control', required: true
+            = f.select :role, [['Secretário','secretary'],['Funcionário','worker']] ,{prompt: 'Tipo'}, class: 'form-control', required: true
 
-        .panel.panel-default
-          .panel-heading style=("text-align: center;")
-            | Contrato de trabalho
-          #addTWs.panel-body
-            .form-group
-              label.col-lg-2.col-md-2.col-sm-3.control-label Data de início e fim
-              .col-md-6
-                .input-group.input-large data-date="01/01/2016"
-                  input#dateStart.form-control.dpd1.date-picker.horas data-date-format="dd/mm/yyyy" data-time="08:00" name="timework_start" type="text" /
-                  span.input-group-addon até
-                  input#dateEnd.form-control.dpd2.date-picker.horas2 data-date-format="dd/mm/yyyy" name="timework_end" type="text" /
-                span.help-block Selecione a data de início e fim do contrato
-            .panel.panel-default.tw-cadastrado
-              #tw0.tw
-                .form-group.fix-form-group
-                  label.col-lg-2.col-md-2.col-sm-3.control-label style=("margin-top: 13px;")  Dias da semana
-                  #weekday.col-sm-10.weekdays style=("margin-top: 18px;")
-                    span#weekCal0.weekCal
-                    textarea#selectedDays0.hide-el name="weekdays[]"
-                .form-group
-                  label.col-lg-2.col-md-2.col-sm-3.control-label Horário de Trabalho
-                  .col-md-3
-                    .input-group.bootstrap-timepicker.timepicker
-                      input#timepicker-start-work.form-control.input-small readonly="" type="text" /
-                      span.input-group-addon
-                        i.fa.fa-clock-o.fa-lg
-                  label.col-sm-1.col-sm-1.control-label até
-                  .col-md-3
-                    .input-group.bootstrap-timepicker.timepicker
-                      input#timepicker-end-work.form-control.input-small readonly="" type="text" /
-                      span.input-group-addon
-                        i.fa.fa-clock-o.fa-lg
-                .form-group
-                  label.col-sm-2.col-sm-2.control-label
-                    | Intervalos
-                    i#plusIntervalos.fa.fa-plus.fixPlus title=("Adicionar novo intervalo")
-                  .intervalos
+        = f.fields_for :contract, @employee.build_contract do |c|
+          .panel.panel-default
+            .panel-heading style=("text-align: center;")
+              | Contrato de trabalho
+            #addTWs.panel-body
+              .form-group
+                label.col-lg-2.col-md-2.col-sm-3.control-label Data de início e fim
+                .col-md-6
+                  .input-group.input-large data-date="01/01/2016"
+                    = c.text_field :start_date, class: 'form-control dpd1 date-picker horas', id: 'dateStart', data:{ date_format: 'dd/mm/yyyy',time: "08:00"}
+                    span.input-group-addon até
+                    = c.text_field :end_date, class: 'form-control dpd2 date-picker horas2', id: 'dateStart', data:{ date_format: 'dd/mm/yyyy',time: "08:00"}
+                  span.help-block Selecione a data de início e fim do contrato
+              .panel.panel-default.tw-cadastrado
+                #tw0.tw
+                  .form-group.fix-form-group
+                    label.col-lg-2.col-md-2.col-sm-3.control-label style=("margin-top: 13px;")  Dias da semana
+                    #weekday.col-sm-10.weekdays style=("margin-top: 18px;")
+                      span#weekCal0.weekCal
+                      textarea#selectedDays0.hide-el name="weekdays[]"
+                  .form-group
+                    label.col-lg-2.col-md-2.col-sm-3.control-label Horário de Trabalho
                     .col-md-3
-                      .input-group.bootstrap-timepicker.timepicker
-                        input#timepicker-start-interval.form-control.input-small readonly="" type="text" /
-                        span.input-group-addon
+                      .input-group.bootstrap-timepicker
+                        = c.text_field :start_time, class: 'form-control input-small timepicker', readonly: true
+                        span.input-group-addon.btn-theme04
                           i.fa.fa-clock-o.fa-lg
                     label.col-sm-1.col-sm-1.control-label até
                     .col-md-3
-                      .input-group.bootstrap-timepicker.timepicker
-                        input#timepicker-end-interval.form-control.input-small readonly="" type="text" /
-                        span.input-group-addon
+                      .input-group.bootstrap-timepicker
+                        = c.text_field :end_time, class: 'form-control input-small timepicker', readonly: true
+                        span.input-group-addon.btn-theme04
                           i.fa.fa-clock-o.fa-lg
+                  = c.fields_for :intervals, c.object.intervals.build do |i|
+                    #add_interval.form-group style="display: none;"
+                      = render partial: "intervals", locals: {i: i}
+                    .form-group
+                      label.col-sm-2.col-sm-2.control-label
+                        | Intervalos
+                        i#plusIntervalos.fa.fa-plus.fixPlus title=("Adicionar novo intervalo")
+                      .intervalos
+                        .col-md-3
+                          .input-group.bootstrap-timepicker
+                            = i.text_field :start_time, class: 'form-control input-small timepicker', readonly: true
+                            span.input-group-addon.btn-theme04
+                              i.fa.fa-clock-o.fa-lg
+                        label.col-sm-1.col-sm-1.control-label até
+                        .col-md-3
+                          .input-group.bootstrap-timepicker
+                            = i.text_field :end_time, class: 'form-control input-small timepicker', readonly: true
+                            span.input-group-addon.btn-theme04
+                              i.fa.fa-clock-o.fa-lg
+
 
 
         .form-group
           .col-lg-12.col-md-12.col-sm-12
             = f.submit 'Criar', class: 'btn btn-primary btn-lg btn-block'
+
