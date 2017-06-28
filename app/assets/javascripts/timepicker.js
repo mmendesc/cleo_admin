@@ -13,7 +13,7 @@ $(document).on('turbolinks:load',function() {
       explicitMode:true
   });
 
-  $('#timepicker1').timepicker({
+  $('#timepicker-start-work').timepicker({
     defaultTime: 'value',
     showInputs: false,
     minuteStep: 5,
@@ -23,4 +23,40 @@ $(document).on('turbolinks:load',function() {
     disableFocus:false,
     explicitMode:true
   });
+
+  $('#timepicker-end-work').timepicker({
+    defaultTime: 'value',
+    showInputs: false,
+    minuteStep: 5,
+    showSeconds: false,
+    showMeridian: false,
+    pickDate: false,
+    disableFocus:false,
+    explicitMode:true
+  });
+
+  $('#timepicker-start-interval').timepicker({
+    defaultTime: 'value',
+    showInputs: false,
+    minuteStep: 5,
+    showSeconds: false,
+    showMeridian: false,
+    pickDate: false,
+    disableFocus:false,
+    explicitMode:true
+  });
+
+  $('#timepicker-end-interval').timepicker({
+    defaultTime: 'value',
+    showInputs: false,
+    minuteStep: 5,
+    showSeconds: false,
+    showMeridian: false,
+    pickDate: false,
+    disableFocus:false,
+    explicitMode:true
+  });
+
+  $('.date-picker').datepicker();
+
 });

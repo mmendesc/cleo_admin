@@ -22,7 +22,5 @@
 //= require jqueryweekline/jquery.weekline
 //= require bootstrap-datepicker/js/bootstrap-datepicker.min
 //= require bootstrap-timepicker/js/bootstrap-timepicker
-//= require advanced-form-components
-
 //= require turbolinks
 //= require_tree .

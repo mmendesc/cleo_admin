@@ -17,5 +17,6 @@
  *= require dashgum/css/style
  *= require dashgum/css/style-responsive
  *= require bootstrap-timepicker/css/bootstrap-timepicker.min
+ *= require bootstrap-datepicker/css/bootstrap-datepicker3.min
  *= require_self
  */

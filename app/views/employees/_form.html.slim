@@ -74,12 +74,6 @@
           .col-lg-9.col-md-9.col-sm-9.select-editable
             = f.select :role, [['Secretário','secretary'],['Funcionário','worker']] , class: 'form-control', required: true
 
-        .input-group.bootstrap-timepicker.timepicker
-          input#timepicker1.form-control.input-small type="text" /
-          span.input-group-addon
-            i.glyphicon.glyphicon-time
-
-
         .panel.panel-default
           .panel-heading style=("text-align: center;")
             | Contrato de trabalho
@@ -103,35 +97,31 @@
                   label.col-lg-2.col-md-2.col-sm-3.control-label Horário de Trabalho
                   .col-md-3
                     .input-group.bootstrap-timepicker.timepicker
-                      input#startHoras0.form-control.timepicker-default name="startHoras[]" readonly=""  type="text" /
-                      span.input-group-btn
-                        button.btn.btn-theme04 type="button"
-                          i.fa.fa-clock-o
+                      input#timepicker-start-work.form-control.input-small readonly="" type="text" /
+                      span.input-group-addon
+                        i.fa.fa-clock-o.fa-lg
                   label.col-sm-1.col-sm-1.control-label até
                   .col-md-3
-                    .input-group.bootstrap-timepicker
-                      input#endHoras0.form-control.timepicker-default name="endHoras[]" readonly="" type="text" /
-                      span.input-group-btn
-                        button.btn.btn-theme04 type="button"
-                          i.fa.fa-clock-o
+                    .input-group.bootstrap-timepicker.timepicker
+                      input#timepicker-end-work.form-control.input-small readonly="" type="text" /
+                      span.input-group-addon
+                        i.fa.fa-clock-o.fa-lg
                 .form-group
                   label.col-sm-2.col-sm-2.control-label
                     | Intervalos
                     i#plusIntervalos.fa.fa-plus.fixPlus title=("Adicionar novo intervalo")
                   .intervalos
                     .col-md-3
-                      .input-group.bootstrap-timepicker
-                        input#intStartHoras00.form-control.timepicker-default name="intStartHoras[0][0]" readonly="" type="text" /
-                        span.input-group-btn
-                          button.btn.btn-theme04 type="button"
-                            i.fa.fa-clock-o
+                      .input-group.bootstrap-timepicker.timepicker
+                        input#timepicker-start-interval.form-control.input-small readonly="" type="text" /
+                        span.input-group-addon
+                          i.fa.fa-clock-o.fa-lg
                     label.col-sm-1.col-sm-1.control-label até
                     .col-md-3
-                      .input-group.bootstrap-timepicker
-                        input#intEndHoras00.form-control.timepicker-default name="intEndHoras[0][0]" readonly="" type="text" /
-                        span.input-group-btn
-                          button.btn.btn-theme04 type="button"
-                            i.fa.fa-clock-o
+                      .input-group.bootstrap-timepicker.timepicker
+                        input#timepicker-end-interval.form-control.input-small readonly="" type="text" /
+                        span.input-group-addon
+                          i.fa.fa-clock-o.fa-lg
 
 
         .form-group
