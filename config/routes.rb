@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :items
+  resources :sales
   devise_for :employees, :path_prefix => 'usuario'
   resources :categories
   resources :services
