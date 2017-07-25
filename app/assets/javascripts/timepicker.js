@@ -1,5 +1,14 @@
 $(document).on('turbolinks:load',function() {
 
+  $('#weekCal0').weekLine({
+      onChange: function () {
+        days=$(this).weekLine('getSelected','indexes');
+        console.log(days.split(','));
+        $.each(days.split(','),function(index,value){
+          $('#day' + value).val('1');
+        });
+      }
+  });
 
   $('#startHoras0').timepicker({
       //autoclose: true,

@@ -75,6 +75,14 @@
             = f.select :role, [['Secretário','secretary'],['Funcionário','worker']] ,{prompt: 'Tipo'}, class: 'form-control', required: true
 
         = f.fields_for :contract, @employee.build_contract do |c|
+          = c.fields_for :week, c.object.build_week do |w|
+            = w.hidden_field :sunday, id: 'day0'
+            = w.hidden_field :monday, id: 'day1'
+            = w.hidden_field :tuesday, id: 'day2'
+            = w.hidden_field :wednesday, id: 'day3'
+            = w.hidden_field :thurdsay, id: 'day4'
+            = w.hidden_field :friday, id: 'day5'
+            = w.hidden_field :saturday, id: 'day6'
           .panel.panel-default
             .panel-heading style=("text-align: center;")
               | Contrato de trabalho

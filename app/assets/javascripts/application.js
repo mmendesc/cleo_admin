@@ -22,5 +22,6 @@
 //= require jqueryweekline/jquery.weekline
 //= require bootstrap-datepicker/js/bootstrap-datepicker.min
 //= require bootstrap-timepicker/js/bootstrap-timepicker
+//= require jqueryweekline/jquery.weekline
 //= require turbolinks
 //= require_tree .

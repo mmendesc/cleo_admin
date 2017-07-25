@@ -18,5 +18,6 @@
  *= require dashgum/css/style-responsive
  *= require bootstrap-timepicker/css/bootstrap-timepicker.min
  *= require bootstrap-datepicker/css/bootstrap-datepicker3.min
+ *= require jqueryweekline/jquery.weekLine-white
  *= require_self
  */
