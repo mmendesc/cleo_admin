@@ -5,9 +5,10 @@ class SalesController < ApplicationController
   end
 
   def create
+    binding.pry
     @sale = Sale.new(sale_params)
     if @sale.save
-      redirect_to products_path, notice: 'Produto criado com sucesso'
+      redirect_to products_path, notice: 'Venda realizada com sucesso.'
     else
       redirect_to :back, notice: 'Ocorreu um erro'
     end

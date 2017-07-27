@@ -1,0 +1,14 @@
+.form-group
+  .col-md-4
+    label.col-lg-3.control-label
+      | Produto
+    .col-lg-3.col-md-3.col-sm-3.select-editable
+      = i.collection_select :product_id, Product.all , :id,:name, {prompt: "Selecione o produto"}, class: 'form-control', required: true
+  .col-md-4
+    = i.label :quantity, class: 'col-lg-3 control-label'
+    .col-lg-3.col-md-3.col-sm-3
+      = i.number_field :quantity, class: 'form-control'
+  .col-md-4
+    = i.label :discount, class: 'col-lg-3 control-label'
+    .col-lg-3.col-md-3.col-sm-3
+      = i.number_field :discount, class: 'form-control'
