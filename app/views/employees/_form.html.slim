@@ -2,7 +2,7 @@
   .col-lg-1.col-md-0.col-sm-0
   .col-lg-10.col-md-11.col-sm-12
     .form-panel
-      = form_for @employee, url: employees_path, method: :post, html: { class: "form-horizontal style-form"} do |f|
+      = form_for @employee, url: employees_path, method: :post, html: { class: "form-horizontal style-form",novalidate: true} do |f|
         .form-group
           = f.label 'Nome', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
           .col-lg-5.col-md-10.col-sm-9
@@ -73,6 +73,24 @@
           = f.label 'Tipo', class: 'col-lg-2 col-md-2 col-sm-3 control-label'
           .col-lg-9.col-md-9.col-sm-9.select-editable
             = f.select :role, [['Secretário','secretary'],['Funcionário','worker']] ,{prompt: 'Tipo'}, class: 'form-control', required: true
+
+        = f.fields_for :abilities, @employee.abilities.build do |a|
+          #new_service.form-group style="display: none;"
+            = render partial: 'new_service', locals: {a: a}
+          .services
+            .form-group
+              label.col-sm-2.col-sm-2.control-label
+                | Serviços
+                i#add_service.fa.fa-plus.fixPlus title=("Adicionar novo intervalo")
+              .col-lg-5.col-md-10.col-sm-9
+                = a.collection_select :service_id, Service.all , :id,:name, {prompt: "Selecione o serviço"}, class: 'form-control', required: true
+
+              = a.label 'Comissão', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+              .col-lg-5.col-md-10.col-sm-9
+                = a.text_field :commission, class: 'address_neigh form-control'
+
+
+
 
         = f.fields_for :contract, @employee.build_contract do |c|
           = c.fields_for :week, c.object.build_week do |w|

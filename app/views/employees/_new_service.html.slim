@@ -1,0 +1,9 @@
+.form-group
+  label.col-sm-2.col-sm-2.control-label
+    | Serviços
+  .col-lg-5.col-md-10.col-sm-9
+    = a.collection_select :service_id, Service.all , :id,:name, {prompt: "Selecione o serviço"}, class: 'form-control', required: true
+
+  = a.label 'Comissão', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+  .col-lg-5.col-md-10.col-sm-9
+    = a.text_field :commission, class: 'address_neigh form-control'

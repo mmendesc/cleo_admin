@@ -5,8 +5,10 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :contract, inverse_of: :employee
+  has_many :abilities, inverse_of: :employee
 
   accepts_nested_attributes_for :contract
+  accepts_nested_attributes_for :abilities
 
   enum role: {worker: 0, secretary: 1}
   enum gender: {male: 0, female: 1}
