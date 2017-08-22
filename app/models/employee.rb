@@ -10,6 +10,7 @@ class Employee < ApplicationRecord
   #belongs_to :responsible, class_name: 'Saloon' ,foreign_key: 'manager_id'
 
   delegate :name, to: :saloon, prefix: :true, allow_nil: true
+  has_many :sales
 
   accepts_nested_attributes_for :contract
   accepts_nested_attributes_for :skills
