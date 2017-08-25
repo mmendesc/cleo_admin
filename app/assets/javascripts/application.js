@@ -23,5 +23,7 @@
 //= require bootstrap-datepicker/js/bootstrap-datepicker.min
 //= require bootstrap-timepicker/js/bootstrap-timepicker
 //= require jqueryweekline/jquery.weekline
+////= require fullcalendar-3.4.0/lib/moment.min
+//= require fullcalendar-3.4.0/fullcalendar.min
 //= require turbolinks
 //= require_tree .

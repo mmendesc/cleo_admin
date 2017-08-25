@@ -12,7 +12,6 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    binding.pry
     @employee = Employee.new(employee_params)
     if @employee.save
       redirect_to employees_path, notice: 'Cliente registrado com sucesso.'

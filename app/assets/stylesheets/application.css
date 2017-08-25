@@ -19,5 +19,6 @@
  *= require bootstrap-timepicker/css/bootstrap-timepicker.min
  *= require bootstrap-datepicker/css/bootstrap-datepicker3.min
  *= require jqueryweekline/jquery.weekLine-white
+ *= require fullcalendar-3.4.0/fullcalendar.min
  *= require_self
  */

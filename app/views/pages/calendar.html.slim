@@ -1,0 +1,35 @@
+.col-md-10
+  #calendar
+.col-md2
+  h4 Adicionar Evento
+  = form_for @appointment, remote: true do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title
+
+    .form-group
+      .col-md-2 style="padding-left: 0px;"
+        = f.label 'Funcionário'
+        = f.collection_select :employee_id, Employee.all , :id,:name, {prompt: "Selecione o funcionario"}, class: 'form-control', required: true
+
+
+    .form-group
+      .col-md-2 style="padding-left: 0px;"
+        = f.label 'Cliente'
+        = f.collection_select :client_id, Client.all , :id,:name, {prompt: "Selecione o cliente"}, class: 'form-control', required: true
+
+    .form-group
+      .col-md-2 style="padding-left: 0px;"
+        = f.label 'Serviço'
+        = f.collection_select :service_id, Service.all , :id,:name, {prompt: "Selecione o serviço"}, class: 'form-control', required: true
+
+    .form-group
+      p Inicio
+      = f.text_field :start_date, class: 'form-group date-picker'
+
+    .form-group
+      = f.submit 'Registrar'
+
+
+
+
