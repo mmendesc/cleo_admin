@@ -19,7 +19,8 @@ $(document).on('turbolinks:load',function() {
                 }
             });
 
-        }
+        },
+        timeFormat: 'H(:mm)'
     })
 
 });

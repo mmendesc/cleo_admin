@@ -2,7 +2,13 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    @appointment.start_date = Date.strptime(appointment_params[:start_date], "%m/%d/%Y")
+    @appointment.start_date = Date.strptime(appointment_params[:start_date], '%m/%d/%Y')
+    if appointment_params[:start_date]
+      @appointment.start_date = @appointment.start_date + appointment_params[:appointment_time].split(':')[0].to_i.hours
+      @appointment.start_date = @appointment.start_date + appointment_params[:appointment_time].split(':')[1].to_i.minutes
+      @time_params = @appointment.start_date.to_a[1..5]
+    end
+    appointment_params[:appointment_time]
     if @appointment.save
       respond_to do |format|
         format.js
@@ -20,8 +26,8 @@ class AppointmentsController < ApplicationController
       @appointments << {
         id: appointment.id,
         title: appointment.title,
-        start:  Date.new(appointment.start_date.year, appointment.start_date.month, appointment.start_date.day),
-        allDay: true,
+        start:  appointment.start_date,
+        allDay: false,
         editable: true,
         backgroundColor: '#SomeColor2',
         borderColor: '#SomeColor2',
@@ -41,12 +47,18 @@ class AppointmentsController < ApplicationController
     end
   end
 
-
-
   private
 
   def appointment_params
-    params.require(:appointment).permit(:title,:start_date,:end_date,:description,:client_id,:service_id,:employee_id)
+    params.require(:appointment).permit(
+      :title,
+      :start_date,
+      :end_date,
+      :description,
+      :client_id,
+      :service_id,
+      :employee_id,
+      :appointment_time
+    )
   end
-
 end

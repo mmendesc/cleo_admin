@@ -1,18 +1,16 @@
-
+console.log("<%= j @appointment.start_date.to_s%>");
 $('#calendar').fullCalendar('addEventSource',{
         // put your options and callbacks here
         events: [
           {
             title: "<%= j @appointment.title%>",
-            start: new Date("<%= @appointment.start_date.year%>","<%= @appointment.start_date.month - 1%>","<%= @appointment.start_date.day%>"),
-            allDay: true,
+            start: new Date("<%= j @appointment.start_date.to_s%>"),
+            allDay: false,
             editable: true,
             backgroundColor: '#SomeColor2',
             borderColor: '#SomeColor2'
           }
         ],
+        timeFormat: 'H(:mm)',
         eventColor: '#378006'
     });
-
-
-
