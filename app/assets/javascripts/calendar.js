@@ -4,7 +4,7 @@ $(document).on('turbolinks:load',function() {
 
     $('#calendar').fullCalendar({
         // put your options and callbacks here
-        eventSources: '/appointments.json',
+        eventSources: '/admin/appointments.json',
         eventRender: function(event, element) {
             element.attr('id','classe1');
             element.append( "<span class='closeon'>X</span>" );

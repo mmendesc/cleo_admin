@@ -1,2 +1,0 @@
-class IntervalsController < ApplicationController
-end

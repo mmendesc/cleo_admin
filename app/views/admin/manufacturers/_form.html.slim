@@ -1,0 +1,5 @@
+= form_for [:admin,Manufacturer.new], remote: true do |f|
+  = f.label 'Fabricante'
+  = f.text_field :name
+
+  = f.button 'Criar', type: 'submit'

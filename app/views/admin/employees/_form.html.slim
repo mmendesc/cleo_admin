@@ -1,0 +1,160 @@
+.row.mt
+  .col-lg-1.col-md-0.col-sm-0
+  .col-lg-10.col-md-11.col-sm-12
+    .form-panel
+      = form_for [:admin,@employee], url: admin_employees_path, method: :post, html: { class: "form-horizontal style-form",novalidate: true} do |f|
+        .form-group
+          = f.label 'Nome', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :name, class: 'name form-control', required: true
+
+          = f.label 'E-mail', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :email, class: 'email form-control', required: true
+
+        .form-group
+          = f.label 'Senha', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.password_field :password, class: 'name form-control', required: true
+
+          = f.label 'Confirmação', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.password_field :password_confirmation, class: 'email form-control', required: true
+
+        .form-group
+          = f.label 'Telefone', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :telephone, class: 'cellphone form-control'
+
+          = f.label 'Celular', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :cellphone, class: 'cellphone form-control'
+
+        .form-group
+          = f.label 'CEP', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :zipcode, class: 'cep form-control'
+
+          = f.label 'Número', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.number_field :number, class: 'address_number form-control'
+
+        .form-group
+          = f.label 'Rua', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :street, class: 'street form-control'
+
+          = f.label 'CPF', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :cpf, class: 'cpf form-control'
+
+        .form-group
+          = f.label 'Anivérsario', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :birthdate, class: 'birthday form-control'
+
+          = f.label 'Sexo', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = radio_button_tag 'employee[gender]', 'male', true, class: 'input-cadastro-radio'
+            = label_tag(:male, 'Masculino', class: 'span-masc')
+            = radio_button_tag 'employee[gender]', 'female', false, class: 'input-cadastro-radio'
+            = label_tag(:female, 'Feminino', class: 'span-masc')
+
+        .form-group
+          = f.label 'Identidade', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :identity, class: 'address_neigh form-control'
+
+          = f.label 'Carteira', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :work_paper, class: 'address_neigh form-control'
+
+        .form-group
+          = f.label 'Tipo', class: 'col-lg-2 col-md-2 col-sm-3 control-label'
+          .col-lg-9.col-md-9.col-sm-9.select-editable
+            = f.select :role, [['Secretário','secretary'],['Funcionário','worker']] ,{prompt: 'Tipo'}, class: 'form-control', required: true
+
+        = f.fields_for :abilities, @employee.abilities.build do |a|
+          #new_service.form-group style="display: none;"
+            = render partial: 'new_service', locals: {a: a}
+          .services
+            .form-group
+              label.col-sm-2.col-sm-2.control-label
+                | Serviços
+                i#add_service.fa.fa-plus.fixPlus title=("Adicionar novo intervalo")
+              .col-lg-5.col-md-10.col-sm-9
+                = a.collection_select :service_id, Service.all , :id,:name, {prompt: "Selecione o serviço"}, class: 'form-control', required: true
+
+              = a.label 'Comissão', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+              .col-lg-5.col-md-10.col-sm-9
+                = a.text_field :commission, class: 'address_neigh form-control'
+
+
+
+
+        = f.fields_for :contract, @employee.build_contract do |c|
+          = c.fields_for :week, c.object.build_week do |w|
+            = w.hidden_field :sunday, id: 'day0'
+            = w.hidden_field :monday, id: 'day1'
+            = w.hidden_field :tuesday, id: 'day2'
+            = w.hidden_field :wednesday, id: 'day3'
+            = w.hidden_field :thurdsay, id: 'day4'
+            = w.hidden_field :friday, id: 'day5'
+            = w.hidden_field :saturday, id: 'day6'
+          .panel.panel-default
+            .panel-heading style=("text-align: center;")
+              | Contrato de trabalho
+            #addTWs.panel-body
+              .form-group
+                label.col-lg-2.col-md-2.col-sm-3.control-label Data de início e fim
+                .col-md-6
+                  .input-group.input-large data-date="01/01/2016"
+                    = c.text_field :start_date, class: 'form-control dpd1 date-picker horas', id: 'dateStart', data:{ date_format: 'dd/mm/yyyy',time: "08:00"}
+                    span.input-group-addon até
+                    = c.text_field :end_date, class: 'form-control dpd2 date-picker horas2', id: 'dateStart', data:{ date_format: 'dd/mm/yyyy',time: "08:00"}
+                  span.help-block Selecione a data de início e fim do contrato
+              .panel.panel-default.tw-cadastrado
+                #tw0.tw
+                  .form-group.fix-form-group
+                    label.col-lg-2.col-md-2.col-sm-3.control-label style=("margin-top: 13px;")  Dias da semana
+                    #weekday.col-sm-10.weekdays style=("margin-top: 18px;")
+                      span#weekCal0.weekCal
+                      textarea#selectedDays0.hide-el name="weekdays[]"
+                  .form-group
+                    label.col-lg-2.col-md-2.col-sm-3.control-label Horário de Trabalho
+                    .col-md-3
+                      .input-group.bootstrap-timepicker
+                        = c.text_field :start_time, class: 'form-control input-small timepicker', readonly: true
+                        span.input-group-addon.btn-theme04
+                          i.fa.fa-clock-o.fa-lg
+                    label.col-sm-1.col-sm-1.control-label até
+                    .col-md-3
+                      .input-group.bootstrap-timepicker
+                        = c.text_field :end_time, class: 'form-control input-small timepicker', readonly: true
+                        span.input-group-addon.btn-theme04
+                          i.fa.fa-clock-o.fa-lg
+                  = c.fields_for :intervals, c.object.intervals.build do |i|
+                    #add_interval.form-group style="display: none;"
+                      = render partial: "intervals", locals: {i: i}
+                    .form-group
+                      label.col-sm-2.col-sm-2.control-label
+                        | Intervalos
+                        i#plusIntervalos.fa.fa-plus.fixPlus title=("Adicionar novo intervalo")
+                      .intervalos
+                        .col-md-3
+                          .input-group.bootstrap-timepicker
+                            = i.text_field :start_time, class: 'form-control input-small timepicker', readonly: true
+                            span.input-group-addon.btn-theme04
+                              i.fa.fa-clock-o.fa-lg
+                        label.col-sm-1.col-sm-1.control-label até
+                        .col-md-3
+                          .input-group.bootstrap-timepicker
+                            = i.text_field :end_time, class: 'form-control input-small timepicker', readonly: true
+                            span.input-group-addon.btn-theme04
+                              i.fa.fa-clock-o.fa-lg
+
+
+
+        .form-group
+          .col-lg-12.col-md-12.col-sm-12
+            = f.submit 'Criar', class: 'btn btn-primary btn-lg btn-block'
