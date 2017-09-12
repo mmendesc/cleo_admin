@@ -1,4 +1,4 @@
-class Admin::RegistrationsController < Devise::RegistrationsController
+class Admin::RegistrationsController < BaseAdminController
 
   protected
 

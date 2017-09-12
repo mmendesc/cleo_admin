@@ -1,4 +1,4 @@
-class Admin::ClientsController < ApplicationController
+class Admin::ClientsController < BaseAdminController
 
   before_action :set_client, except: [:index,:new,:create]
   before_action :set_page_name, except: [:create,:update,:destroy]

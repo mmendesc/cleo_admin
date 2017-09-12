@@ -1,4 +1,4 @@
-class Admin::AppointmentsController < ApplicationController
+class Admin::AppointmentsController < BaseAdminController
 
   def create
     @appointment = Appointment.new(appointment_params)

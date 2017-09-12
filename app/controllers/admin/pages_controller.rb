@@ -1,4 +1,4 @@
-class Admin::PagesController < ApplicationController
+class Admin::PagesController < BaseAdminController
 
   def calendar
     @appointment = Appointment.new

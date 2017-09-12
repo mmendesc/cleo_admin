@@ -1,4 +1,4 @@
-class Admin::ProductsController < ApplicationController
+class Admin::ProductsController < BaseAdminController
 
   before_action :set_product, except: [:index,:new,:create]
   before_action :set_page_name, except: [:create,:update,:destroy]

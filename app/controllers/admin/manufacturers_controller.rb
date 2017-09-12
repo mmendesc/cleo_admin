@@ -1,4 +1,4 @@
-class Admin::ManufacturersController < ApplicationController
+class Admin::ManufacturersController < BaseAdminController
 
   def create
     @manufacturer = Manufacturer.new(manufacturer_params)

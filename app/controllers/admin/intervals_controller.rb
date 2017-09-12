@@ -1,2 +1,2 @@
-class Admin::IntervalsController < ApplicationController
+class Admin::IntervalsController < BaseAdminController
 end

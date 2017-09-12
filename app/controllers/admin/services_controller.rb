@@ -1,4 +1,4 @@
-class Admin::ServicesController < ApplicationController
+class Admin::ServicesController < BaseAdminController
 
   before_action :set_service, except: [:index,:new,:create]
   before_action :set_page_name, except: [:create,:update,:destroy]

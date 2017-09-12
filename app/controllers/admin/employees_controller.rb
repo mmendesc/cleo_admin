@@ -1,4 +1,4 @@
-class Admin::EmployeesController < ApplicationController
+class Admin::EmployeesController < BaseAdminController
 
   before_action :set_employee, except: [:index,:new,:create]
   before_action :set_page_name, except: [:create,:update,:destroy]
