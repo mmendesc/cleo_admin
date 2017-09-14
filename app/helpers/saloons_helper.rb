@@ -1,0 +1,2 @@
+module SaloonsHelper
+end

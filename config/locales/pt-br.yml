@@ -90,3 +90,9 @@ pt-BR:
       index: Lista de Funcionários
       show: Funcionário
       edit: Editar Funcionário
+
+    saloons:
+      new: Cadastro de Salão
+      index: Lista de Salões
+      show: Salão
+      edit: Editar Salão

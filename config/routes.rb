@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+
   devise_for :employees, path: '', path_names: { sign_in: 'admin'}
   namespace :admin do
     resources :appointments
     resources :abilities
     resources :items
     resources :sales
-
+    resources :saloons
     resources :categories
     resources :services
     resources :manufacturers
