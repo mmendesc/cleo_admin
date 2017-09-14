@@ -6,6 +6,7 @@ class Employee < ApplicationRecord
 
   has_one :contract, inverse_of: :employee
   has_many :abilities, inverse_of: :employee
+  # belongs_to :saloon
 
   accepts_nested_attributes_for :contract
   accepts_nested_attributes_for :abilities
