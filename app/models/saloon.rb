@@ -1,3 +1,4 @@
 class Saloon < ApplicationRecord
-  belongs_to :employee
+  has_many :employees
+  has_one :manager, class_name: 'Employee', foreign_key: 'manager_id'
 end
