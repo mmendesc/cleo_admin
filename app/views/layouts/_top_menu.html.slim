@@ -1,65 +1,14 @@
 header.header.black-bg
-        .sidebar-toggle-box
-          .fa.fa-bars.tooltips data-original-title=("Toggle Navigation") data-placement="right"
-        /! logo start
-        a.logo href="index.html"
-          b DASHGUM FREE
-        /! logo end
-        #top_menu.nav.notify-row
-          /! notification start
-          ul.nav.top-menu
-            /! settings start
-            li.dropdown
-              a.dropdown-toggle data-toggle="dropdown"
-                i.fa.fa-tasks
-                span.badge.bg-theme 4
-              ul.dropdown-menu.extended.tasks-bar
-                .notify-arrow.notify-arrow-green
-                li
-                  p.green You have 4 pending tasks
-                li
-                  a href="index.html#"
-                  .task-info
-                    .desc DashGum Admin Panel
-                    .percent 40%
-                  .progress.progress-striped
-                    .progress-bar.progress-bar-success aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" style=("width: 40%")
-                      span.sr-only 40% Complete (success)
-                li
-                  a href="index.html#"
-                  .task-info
-                    .desc Database Update
-                    .percent 60%
-                  .progress.progress-striped
-                    .progress-bar.progress-bar-warning aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" style=("width: 60%")
-                      span.sr-only 60% Complete (warning)
-                li
-                  a href="index.html#"
-                  .task-info
-                    .desc Product Development
-                    .percent 80%
-                  .progress.progress-striped
-                    .progress-bar.progress-bar-info aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" style=("width: 80%")
-                      span.sr-only 80% Complete
-                li
-                  a href="index.html#"
-                  .task-info
-                    .desc Payments Sent
-                    .percent 70%
-                  .progress.progress-striped
-                    .progress-bar.progress-bar-danger aria-valuemax="100" aria-valuemin="0" aria-valuenow="70" role="progressbar" style=("width: 70%")
-                      span.sr-only 70% Complete (Important)
-                li.external
-                  a href="#"  See All Tasks
-            /! settings end
-            /! inbox dropdown start
-        .top-menu
-          ul.nav.pull-right.top-menu
-            li
-              a.logout href="login.html"  Logout
-      /! header end
-      /!
-        | **********************************************************************************************************************************************************
-        | MAIN SIDEBAR MENU
-        | ***********************************************************************************************************************************************************
-      /! sidebar start
+  .sidebar-toggle-box
+    .fa.fa-bars.tooltips data-original-title=("Toggle Navigation") data-placement="right"
+  /! logo start
+  a.logo href="index.html"
+    b Cleo Admin
+  /! logo end
+
+      /! settings end
+      /! inbox dropdown start
+  .top-menu
+    ul.nav.pull-right.top-menu
+      li
+        = link_to 'Logout', sign_out_path, method: :delete, class: 'logout'

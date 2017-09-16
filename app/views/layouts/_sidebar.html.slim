@@ -1,29 +1,70 @@
+aside
+  #sidebar.nav-collapse
+    /! sidebar menu start
+    ul#nav-accordion.sidebar-menu
+      p.centered
+        a href="profile.html"
+          img.img-circle src="" width="60" /
+      h5.centered Marcel Newman
 
-#sidebar.nav-collapse
-  ul.sidebar-menu#nav-accordion
-    li.mt
-      a href=""
-        i.fa.fa-calendar
-        span Agenda
-    li.sub-menu
-      a href="/clients"
-        i.fa.fa-users
-        span Clientes
-    li.sub-menu
-      a href=""
-        i.fa.fa-users
-        span Funcionários
-    li.sub-menu
-      a href="/products"
-        i.fa.fa-users
-        span Produtos
-    li.sub-menu
-      a href=""
-        i.fa.fa-users
-        span Serviços
-    li.sub-menu
-      a href=""
-        i.fa.fa-users
-        span Clientes
+      - if current_employee.role == 'master'
 
+        li.sub-menu
+          a href="/admin/saloons"
+            i.fa.fa-th
+            span Salões
+      - if current_employee.role == 'manager'
 
+        li.sub-menu
+          a href="/admin/clients"
+            i.fa.fa-desktop
+            span Clientes
+
+        li.sub-menu
+          a href="/admin/employees"
+            i.fa.fa-cogs
+            span Funcionários
+          ul.sub
+            li
+              a href="calendar.html"  Calendar
+            li
+              a href="gallery.html"  Gallery
+            li
+              a href="todo_list.html"  Todo List
+
+        li.sub-menu
+          a href="/admin/categories"
+            i.fa.fa-book
+            span Categorias
+
+        li.sub-menu
+          a href="javascript:;"
+            i.fa.fa-bar-chart-o
+            span Relatórios
+          ul.sub
+            li
+              a href="morris.html"  Morris
+            li
+              a href="chartjs.html"  Chartjs
+
+      - if current_employee.role != 'master'
+
+        li.mt
+          a href="/admin/calendar"
+            i.fa.fa-dashboard
+            span Agenda
+
+        li.sub-menu
+          a href="/admin/products"
+            i.fa.fa-cart-plus
+            span Produtos
+
+        li.sub-menu
+          a href="/admin/services"
+            i.fa.fa-tasks
+            span Serviços
+
+        li.sub-menu
+          a href="/admin/sales/new"
+            i.fa.fa-th
+            span Vender Produtos

@@ -1,4 +1,5 @@
 = form_for [:admin,Manufacturer.new], remote: true do |f|
+  = f.hidden_field :saloon_id, value: current_employee.saloon_id
   = f.label 'Fabricante'
   = f.text_field :name
 

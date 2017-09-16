@@ -30,7 +30,7 @@
           .col-lg-5.col-md-10.col-sm-9
             = f.text_field :street, class: 'cellphone form-control', required: true
 
-        = f.fields_for :employee, @saloon.build_employee do |c|
+        = f.fields_for :managers, @saloon.managers.build do |c|
           .panel.panel-default
             .panel-heading style=("text-align: center;")
               | Cadastre um Administrador

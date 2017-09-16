@@ -4,6 +4,7 @@
     .form-panel
 
       = form_for [:admin,@client], html: { class: "form-horizontal style-form"} do |f|
+        = f.hidden_field :saloon_id, value: current_employee.saloon_id
         .form-group
           = f.label 'Nome', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
           .col-lg-5.col-md-10.col-sm-9

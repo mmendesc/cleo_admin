@@ -14,6 +14,7 @@ class Admin::SaloonsController < BaseAdminController
   def create
     @saloon = Saloon.new(saloon_params)
     if @saloon.save
+      set_saloon_id(@saloon.managers.first)
       redirect_to admin_saloons_path, notice: 'Cliente registrado com sucesso.'
     else
       redirect_to admin_saloons_path, notice: 'Ocorreu um erro'
@@ -21,12 +22,17 @@ class Admin::SaloonsController < BaseAdminController
   end
   private
 
+  def set_saloon_id(manager)
+    manager.saloon_id = manager.manager_id
+    manager.save
+  end
+
   def set_saloon
     @saloon = Saloon.find(params[:id])
   end
 
   def saloon_params
-    params.require(:saloon).permit(:name,:email,:phone,:cnpj,:zipcode,:street,:complement,:employee_id, employee_attributes: [:id,:name,:email,:password,:password_confirmation])
+    params.require(:saloon).permit(:name,:email,:phone,:cnpj,:zipcode,:street,:complement,:employee_id, managers_attributes: [:id,:name,:email,:password,:password_confirmation])
   end
 
   def set_page_name

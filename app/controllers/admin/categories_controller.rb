@@ -1,10 +1,10 @@
 class Admin::CategoriesController < BaseAdminController
 
-  before_action :set_product, except: [:index,:new,:create]
+  before_action :set_category, except: [:index,:new,:create]
   before_action :set_page_name, except: [:create,:update,:destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.by_saloon(current_employee.saloon_id)
   end
 
   def new
@@ -28,7 +28,7 @@ class Admin::CategoriesController < BaseAdminController
   end
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name,:saloon_id)
   end
 
   def set_page_name

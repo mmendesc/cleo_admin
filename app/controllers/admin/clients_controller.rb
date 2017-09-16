@@ -4,7 +4,7 @@ class Admin::ClientsController < BaseAdminController
   before_action :set_page_name, except: [:create,:update,:destroy]
 
   def index
-    @clients = Client.all
+    @clients = Client.by_saloon(current_employee.saloon_id)
   end
 
   def new
@@ -53,7 +53,7 @@ class Admin::ClientsController < BaseAdminController
   end
 
   def client_params
-    params.require(:client).permit(:name,:email,:telephone,:cellphone,:zipcode,:number,:street,:cpf,:birthday,:sex,:district)
+    params.require(:client).permit(:name,:email,:telephone,:cellphone,:zipcode,:number,:street,:cpf,:birthday,:sex,:district,:saloon_id)
   end
 
   def set_page_name

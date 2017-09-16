@@ -4,7 +4,7 @@ class Admin::ProductsController < BaseAdminController
   before_action :set_page_name, except: [:create,:update,:destroy]
 
   def index
-    @products = Product.all
+    @products = Product.by_saloon(current_employee.saloon_id)
   end
 
   def show
@@ -52,7 +52,7 @@ class Admin::ProductsController < BaseAdminController
   end
 
   def product_params
-    params.require(:product).permit(:name,:price,:quantity,:manufacturer_id)
+    params.require(:product).permit(:name,:price,:quantity,:manufacturer_id,:saloon_id)
   end
 
   def set_page_name
