@@ -4,7 +4,11 @@ class Admin::EmployeesController < BaseAdminController
   before_action :set_page_name, except: [:create,:update,:destroy]
 
   def index
-    @employees = Employee.not_master.by_saloon(current_employee.saloon_id)
+    if current_employee.role == 'master'
+      @employees = Employee.all
+    else
+      @employees = Employee.not_master.by_saloon(current_employee.saloon_id)
+    end
   end
 
   def new

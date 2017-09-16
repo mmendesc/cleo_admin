@@ -4,6 +4,7 @@ table#dtable.table.table-striped.table-bordered.table-hover.table-checkable.orde
     tr
       th Nome
       th E-mail
+      th Salão
       th Telefone
       th Celular
       th Aniversário
@@ -12,9 +13,11 @@ table#dtable.table.table-striped.table-bordered.table-hover.table-checkable.orde
       th Apagar
   tbody
     - @employees.each do |employee|
+      /- binding.pry
       tr
         td = link_to "#{employee.name}", [:admin,employee]
         td = employee.email
+        td = employee.saloon.name
         td = employee.telephone
         td = employee.cellphone
         td = employee.birthdate
