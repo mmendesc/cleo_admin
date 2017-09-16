@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915182620) do
+ActiveRecord::Schema.define(version: 20170916002454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170915182620) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "saloon_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170915182620) do
     t.string   "district"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "saloon_id"
   end
 
   create_table "contracts", force: :cascade do |t|
@@ -116,6 +118,7 @@ ActiveRecord::Schema.define(version: 20170915182620) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "saloon_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -125,6 +128,7 @@ ActiveRecord::Schema.define(version: 20170915182620) do
     t.integer  "manufacturer_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "saloon_id"
   end
 
   create_table "sales", force: :cascade do |t|
@@ -155,6 +159,7 @@ ActiveRecord::Schema.define(version: 20170915182620) do
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "saloon_id"
   end
 
   create_table "weeks", force: :cascade do |t|

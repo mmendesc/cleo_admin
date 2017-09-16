@@ -11,6 +11,6 @@ class Employee < ApplicationRecord
   accepts_nested_attributes_for :contract
   accepts_nested_attributes_for :abilities
 
-  enum role: {worker: 0, secretary: 1}
+  enum role: {worker: 0, manager: 1,master: 3}
   enum gender: {male: 0, female: 1}
 end
