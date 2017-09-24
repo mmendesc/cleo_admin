@@ -1,10 +1,10 @@
-class Admin::ServicesController < ApplicationController
+class Admin::ServicesController < BaseAdminController
 
   before_action :set_service, except: [:index,:new,:create]
   before_action :set_page_name, except: [:create,:update,:destroy]
 
   def index
-    @services = Service.all
+    @services = Service.by_saloon(current_employee.saloon_id)
   end
 
   def show
@@ -52,7 +52,7 @@ class Admin::ServicesController < ApplicationController
   end
 
   def service_params
-    params.require(:service).permit(:name,:price,:hours,:minutes,:category_id)
+    params.require(:service).permit(:name,:price,:hours,:minutes,:category_id,:saloon_id)
   end
 
   def set_page_name

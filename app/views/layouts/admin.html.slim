@@ -1,0 +1,49 @@
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title CleoAdmin
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://use.fontawesome.com/ecb2c4079a.js"
+  body
+    section#container
+      /!
+        | **********************************************************************************************************************************************************
+        | TOP BAR CONTENT &amp; NOTIFICATIONS
+        | ***********************************************************************************************************************************************************
+      /! header start
+      = render 'layouts/top_menu'
+      /! header end
+      /!
+        | **********************************************************************************************************************************************************
+        | MAIN SIDEBAR MENU
+        | ***********************************************************************************************************************************************************
+      /! sidebar start
+      = render 'layouts/sidebar'
+      /! sidebar menu end
+      /! sidebar end
+      /!
+        | **********************************************************************************************************************************************************
+        | MAIN CONTENT
+        | ***********************************************************************************************************************************************************
+      /! main content start
+      section#main-content
+        section.wrapper.site-min-height
+          = render 'layouts/messages'
+          h3
+            i.fa
+            | #{@page}
+          .row.mt
+            .col-lg-12
+              = yield
+
+      /! /MAIN CONTENT
+      /! main content end
+      /! footer start
+      footer.site-footer
+        .text-center
+          | 2014 - Alvarez.is
+          a.go-top href="blank.html#"
+            i.fa.fa-angle-up
+      /! footer end

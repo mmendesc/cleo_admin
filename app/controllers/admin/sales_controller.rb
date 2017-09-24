@@ -1,4 +1,4 @@
-class Admin::SalesController < ApplicationController
+class Admin::SalesController < BaseAdminController
 
   def new
     @sale = Sale.new

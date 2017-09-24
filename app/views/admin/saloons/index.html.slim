@@ -1,0 +1,22 @@
+= link_to 'Novo Salão', new_admin_saloon_path
+table#dtable.table.table-striped.table-bordered.table-hover.table-checkable.order-column
+  thead
+    tr
+      th Nome
+      th E-mail
+      th Telefone
+      th Celular
+      th Sexo
+      th CEP
+      th Apagar
+  tbody
+    - @saloons.each do |saloon|
+      tr
+        td = link_to "#{saloon.name}", [:admin,saloon]
+        td = saloon.email
+        td = saloon.phone
+        td = saloon.cnpj
+        td = saloon.street
+        td = saloon.zipcode
+        td style="text-align:center"
+          = link_to 'X', admin_saloon_path(saloon), method: :delete, data: {confirm: 'Deseja apagar esse Funcionário?'}

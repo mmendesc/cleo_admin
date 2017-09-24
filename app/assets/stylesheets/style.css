@@ -1,3 +1,18 @@
 .selectedDay{
   color: red;
 }
+
+.backimage{
+  background-image: url(login.jpg);
+  height: 100%;
+}
+
+#login-page{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+.field{
+  display: grid;
+}

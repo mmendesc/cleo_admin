@@ -1,0 +1,58 @@
+.row.mt
+  .col-lg-1.col-md-0.col-sm-0
+  .col-lg-10.col-md-11.col-sm-12
+    .form-panel
+      = form_for [:admin,@saloon], url: admin_saloons_path, method: :post, html: { class: "form-horizontal style-form",novalidate: true} do |f|
+        .form-group
+          = f.label 'Nome', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :name, class: 'name form-control', required: true
+
+          = f.label 'E-mail', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :email, class: 'email form-control'
+
+        .form-group
+          = f.label 'Telefone', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :phone, class: 'form-control'
+
+          = f.label 'CNPJ', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :cnpj, class: 'cnpj form-control', required: true
+
+        .form-group
+          = f.label 'CEP', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :zipcode, class: 'cep cellphone form-control'
+
+          = f.label 'Rua', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+          .col-lg-5.col-md-10.col-sm-9
+            = f.text_field :street, class: 'cellphone form-control', required: true
+
+        = f.fields_for :managers, @saloon.managers.build do |c|
+          .panel.panel-default
+            .panel-heading style=("text-align: center;")
+              | Cadastre um Administrador
+            .panel-body
+              .form-group
+                = c.label 'Nome', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+                .col-lg-5.col-md-10.col-sm-9
+                  = c.text_field :name, class: 'form-control'
+
+                = c.label 'Email', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+                .col-lg-5.col-md-10.col-sm-9
+                  = c.text_field :email, class: 'form-control', required: true
+
+              .form-group
+                = c.label 'Senha', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+                .col-lg-5.col-md-10.col-sm-9
+                  = c.password_field :password, class: 'form-control'
+
+                = c.label 'Confirmaçao de Senha', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+                .col-lg-5.col-md-10.col-sm-9
+                  = c.password_field :password_confirmation, class: 'form-control', required: true
+
+        .form-group
+          .col-lg-12.col-md-12.col-sm-12
+            = f.submit 'Criar', class: 'btn btn-primary btn-lg btn-block'

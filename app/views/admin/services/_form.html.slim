@@ -3,9 +3,10 @@
   .col-lg-10.col-md-11.col-sm-12
     .form-panel
       = form_for [:admin,@service], html: { class: "form-horizontal style-form"} do |f|
+        = f.hidden_field :saloon_id, value: current_employee.saloon_id
         .form-group
           = f.label 'Categoria', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
-          = f.collection_select :category_id, Category.all , :id,:name, {prompt: "Selecione o fabricante"}, class: 'form-control', required: true
+          = f.collection_select :category_id, Category.by_saloon(current_employee.saloon_id) , :id,:name, {prompt: "Selecione o fabricante"}, class: 'form-control', required: true
           br
 
         .form-group

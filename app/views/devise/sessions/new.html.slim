@@ -1,0 +1,26 @@
+#login-page.backimage
+  .container
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-login'}) do |f|
+      = image_tag "cleo.png"
+      .login-wrap
+
+        .form-group
+          .field
+            = f.email_field :email, autofocus: true, class: 'form-control' , id: 'email' , placeholder: 'E-mail'
+
+        .form-group
+          .field
+            = f.password_field :password, class: 'form-control', id: 'password', placeholder: 'Senha'
+        label.checkbox
+          span.pull-right
+            a data-toggle="modal" href="login.html#myModal"  Esqueceu a senha?
+        button.btn.btn-theme.btn-block type="submit" value="login"
+          i.fa.fa-lock
+          | ENTRAR
+        .login-social-link.centered
+        hr/
+        .registration
+          | Ainda não tem um login de acesso?
+          br/
+          a href="#"
+            | Criar conta

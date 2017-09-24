@@ -3,6 +3,7 @@
   .col-lg-10.col-md-11.col-sm-12
     .form-panel
       = form_for [:admin,@employee], url: admin_employees_path, method: :post, html: { class: "form-horizontal style-form",novalidate: true} do |f|
+        = f.hidden_field :saloon_id, value: current_employee.saloon_id
         .form-group
           = f.label 'Nome', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
           .col-lg-5.col-md-10.col-sm-9
@@ -24,11 +25,11 @@
         .form-group
           = f.label 'Telefone', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
           .col-lg-5.col-md-10.col-sm-9
-            = f.text_field :telephone, class: 'cellphone form-control'
+            = f.text_field :telephone, class: 'fixtelefone form-control'
 
           = f.label 'Celular', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
           .col-lg-5.col-md-10.col-sm-9
-            = f.text_field :cellphone, class: 'cellphone form-control'
+            = f.text_field :cellphone, class: 'telefone form-control'
 
         .form-group
           = f.label 'CEP', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
@@ -51,7 +52,7 @@
         .form-group
           = f.label 'Anivérsario', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
           .col-lg-5.col-md-10.col-sm-9
-            = f.text_field :birthdate, class: 'birthday form-control'
+            = f.text_field :birthdate, class: 'data form-control'
 
           = f.label 'Sexo', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
           .col-lg-5.col-md-10.col-sm-9
@@ -72,7 +73,7 @@
         .form-group
           = f.label 'Tipo', class: 'col-lg-2 col-md-2 col-sm-3 control-label'
           .col-lg-9.col-md-9.col-sm-9.select-editable
-            = f.select :role, [['Secretário','secretary'],['Funcionário','worker']] ,{prompt: 'Tipo'}, class: 'form-control', required: true
+            = f.select :role, [['Gerente','manager'],['Funcionário','worker']] ,{prompt: 'Tipo'}, class: 'form-control', required: true
 
         = f.fields_for :abilities, @employee.abilities.build do |a|
           #new_service.form-group style="display: none;"
@@ -85,9 +86,10 @@
               .col-lg-5.col-md-10.col-sm-9
                 = a.collection_select :service_id, Service.all , :id,:name, {prompt: "Selecione o serviço"}, class: 'form-control', required: true
 
-              = a.label 'Comissão', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
               .col-lg-5.col-md-10.col-sm-9
-                = a.text_field :commission, class: 'address_neigh form-control'
+                = a.label 'Comissão', class: 'col-lg-1 col-md-2 col-sm-3 control-label'
+                .col-lg-5.col-md-10.col-sm-9
+                  = a.text_field :commission, class: 'percent address_neigh form-control'
 
 
 

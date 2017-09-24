@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824221622) do
+ActiveRecord::Schema.define(version: 20170916002454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170824221622) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "saloon_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170824221622) do
     t.string   "district"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "saloon_id"
   end
 
   create_table "contracts", force: :cascade do |t|
@@ -91,6 +93,8 @@ ActiveRecord::Schema.define(version: 20170824221622) do
     t.integer  "role"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "saloon_id"
+    t.integer  "manager_id"
     t.index ["email"], name: "index_employees_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true, using: :btree
   end
@@ -114,6 +118,7 @@ ActiveRecord::Schema.define(version: 20170824221622) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "saloon_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -123,11 +128,25 @@ ActiveRecord::Schema.define(version: 20170824221622) do
     t.integer  "manufacturer_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "saloon_id"
   end
 
   create_table "sales", force: :cascade do |t|
     t.integer  "employee_id"
     t.integer  "client_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "saloons", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "cnpj"
+    t.string   "zipcode"
+    t.string   "street"
+    t.string   "complement"
+    t.integer  "employee_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -140,6 +159,7 @@ ActiveRecord::Schema.define(version: 20170824221622) do
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "saloon_id"
   end
 
   create_table "weeks", force: :cascade do |t|
