@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  #root to: "home#index"
+
   namespace :admin do
     resources :appointments
     resources :abilities
@@ -15,5 +17,10 @@ Rails.application.routes.draw do
     get '/calendar' => 'pages#calendar', as: 'calendar'
     root to: "clients#index"
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  namespace :user do
+     root to: "home#index"
+  end
+
+      # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
