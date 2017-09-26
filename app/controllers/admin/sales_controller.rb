@@ -1,5 +1,5 @@
 class Admin::SalesController < BaseAdminController
-
+  load_and_authorize_resource
   def new
     @sale = Sale.new
   end

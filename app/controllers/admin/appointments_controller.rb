@@ -1,5 +1,5 @@
 class Admin::AppointmentsController < BaseAdminController
-
+  
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.start_date = Date.strptime(appointment_params[:start_date], '%m/%d/%Y')

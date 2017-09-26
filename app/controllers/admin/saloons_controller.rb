@@ -1,5 +1,5 @@
 class Admin::SaloonsController < BaseAdminController
-
+  load_and_authorize_resource
   before_action :set_saloon, except: [:index,:new,:create]
   before_action :set_page_name, except: [:create,:update,:destroy]
 

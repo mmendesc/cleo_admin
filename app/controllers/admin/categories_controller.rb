@@ -1,5 +1,5 @@
 class Admin::CategoriesController < BaseAdminController
-
+  load_and_authorize_resource
   before_action :set_category, except: [:index,:new,:create]
   before_action :set_page_name, except: [:create,:update,:destroy]
 

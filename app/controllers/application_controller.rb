@@ -13,4 +13,6 @@ class ApplicationController < ActionController::Base
     new_employee_session_path
   end
 
+  
+
 end
