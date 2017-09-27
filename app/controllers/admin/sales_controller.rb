@@ -6,10 +6,19 @@ class Admin::SalesController < BaseAdminController
 
   def create
     @sale = Sale.new(sale_params)
-    if @sale.save
+    begin
+      Sale.transaction do
+        @sale.save
+        @sale.items.each do |item|
+          product = item.product
+          product.quantity = product.quantity - item.quantity
+          product.save!
+        end
+      end
       redirect_to admin_products_path, notice: 'Venda realizada com sucesso.'
-    else
-      redirect_to :back, notice: 'Ocorreu um erro'
+    rescue => e
+      Rails.logger.error "Message: #{e.message}"
+      redirect_to :back, alert: 'Ocorreu um erro na venda de um produto'
     end
   end
 
