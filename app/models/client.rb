@@ -15,5 +15,4 @@ class Client < ApplicationRecord
     end
     total
   end
->>>>>>> Report Methods
 end
