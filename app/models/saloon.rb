@@ -5,7 +5,7 @@ class Saloon < ApplicationRecord
   accepts_nested_attributes_for :managers
 
 
-  def top_ten
+  def top_ten_clients
     expenses = []
     Client.by_saloon(self.id).all.each do |client|
       expenses << [client.total_expense,client.id]

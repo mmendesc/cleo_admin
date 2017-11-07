@@ -28,6 +28,7 @@ class Ability
     can :manage, Service
     can :manage, Sale
     can :manage, :page
+    can :manage, :report
   end
 
   def agent_worker
