@@ -1,7 +1,7 @@
 class BaseAdminController < ActionController::Base
   protect_from_forgery with: :exception
   layout 'admin'
-
+  before_action :authenticate_employee!
   rescue_from CanCan::AccessDenied do |exception|
     flash.now[:danger] = "Acesso negado. Você não está autorizado a acessar essa página"
     if current_employee.role == 'master'

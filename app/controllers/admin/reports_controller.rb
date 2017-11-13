@@ -1,5 +1,11 @@
 class Admin::ReportsController < BaseAdminController
   authorize_resource :class => false
+
+
+  def top_report
+
+  end
+
   def top_ten
     render json: ClientReport.new(Saloon.first).top_ten
   end

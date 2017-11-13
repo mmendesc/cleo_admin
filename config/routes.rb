@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :clients
     resources :employees
 
+    get '/top_report' => 'reports#top_report', as: 'top_report'
     get '/top_ten' => 'reports#top_ten', as: 'top_ten_clients'
     get '/total_revenue' => 'reports#total_revenue', as: 'total_revenue'
     get '/revenue_day' => 'reports#revenue_by_day', as: 'revenue_by_day'
