@@ -3,6 +3,7 @@
 .col-md2
   h4 Adicionar Evento
   = form_for [:admin,@appointment], remote: true do |f|
+    = f.hidden_field :saloon_id, value: current_employee.saloon.id
     .form-group
       = f.label :title
       = f.text_field :title

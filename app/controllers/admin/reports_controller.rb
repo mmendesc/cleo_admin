@@ -6,6 +6,10 @@ class Admin::ReportsController < BaseAdminController
 
   end
 
+  def revenue
+
+  end
+
   def top_ten
     render json: ClientReport.new(Saloon.first).top_ten
   end

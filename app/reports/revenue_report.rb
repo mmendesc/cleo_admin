@@ -5,7 +5,11 @@ class RevenueReport
   end
 
   def total_revenue
-    @saloon.total_revenue
+    revenue = {}
+    revenue['services'] = @saloon.total_revenue
+    revenue['sales'] = @saloon.services_revenue
+    revenue['total'] = @saloon.total_revenue + @saloon.services_revenue
+    revenue
   end
 
   def revenue_by_day(day)

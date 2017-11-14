@@ -1,5 +1,5 @@
 class Admin::AppointmentsController < BaseAdminController
-  
+
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.start_date = Date.strptime(appointment_params[:start_date], '%m/%d/%Y')
@@ -20,9 +20,8 @@ class Admin::AppointmentsController < BaseAdminController
 
 
   def index
-    #binding.pry
     @appointments = []
-    Appointment.where('created_at >= ? and created_at <= ?',params[:start],params[:end]).all.each do |appointment|
+    Appointment.by_saloon(current_employee.saloon).where('created_at >= ? and created_at <= ?',params[:start],params[:end]).all.each do |appointment|
       @appointments << {
         id: appointment.id,
         title: appointment.title,
@@ -58,7 +57,8 @@ class Admin::AppointmentsController < BaseAdminController
       :client_id,
       :service_id,
       :employee_id,
-      :appointment_time
+      :appointment_time,
+      :saloon_id
     )
   end
 end

@@ -21,6 +21,14 @@ class Saloon < ApplicationRecord
     total
   end
 
+  def services_revenue
+    total = 0
+    Appointment.by_saloon(self).where("start_date < ?", Time.now + 1.hour).each do |appointment|
+      total = total + appointment.service.price.to_f
+    end
+    total
+  end
+
   def product_revenue(name)
     product = Product.find_by(name: name)
     total = 0
