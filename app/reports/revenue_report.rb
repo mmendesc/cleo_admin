@@ -13,11 +13,18 @@ class RevenueReport
   end
 
   def revenue_by_day(day)
-    @saloon.revenue_by_day(day)
+    revenue = {}
+    revenue['services'] = @saloon.service_by_day(day)
+    revenue['sales'] = @saloon.sale_by_day(day)
+    revenue['total'] = @saloon.service_by_day(day) + @saloon.sale_by_day(day)
+    revenue
   end
 
   def revenue_by_day_and_product(day,name)
-    @saloon.revenue_by_day_and_product(day,name)
+    revenue = {}
+    revenue['total'] = @saloon.sale_by_day_and_product(day,name)
+    revenue['quantity'] = @saloon.product_quantity_sale(day,name)
+    revenue
   end
 
 end
