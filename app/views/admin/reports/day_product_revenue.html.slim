@@ -1,2 +1,9 @@
-.google_chart
+.google_chart data-saloon="#{current_employee.saloon_id}" data-day="#{@day}" data-product="#{@product.name}"
   #day_product_revenue_chart style=("width: 100%; height: 250px;")
+
+.row
+  = form_tag('/admin/day_product_revenue', method: :get)
+    = text_field_tag('day','Escolha o dia',  class: 'date-picker', data:{ date_format: 'dd/mm/yyyy'})
+    = select_tag 'product', options_from_collection_for_select(Product.all , :id,:name)
+    = submit_tag 'Gerar Relatório'
+

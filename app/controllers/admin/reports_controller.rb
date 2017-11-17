@@ -12,15 +12,16 @@ class Admin::ReportsController < BaseAdminController
 
 
   def day_revenue
-
+    @day = params[:day] || Date.today.strftime("%m/%d/%Y")
   end
 
   def day_product_revenue
-
+    @day = params[:day] || Date.today.strftime("%m/%d/%Y")
+    @product = params[:product] ?  Product.find(params[:product]) : Product.new
   end
 
   def product_revenue
-
+    @product = params[:product] ?  Product.find(params[:product]) : Product.new
   end
 
   def top_ten

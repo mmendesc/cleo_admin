@@ -69,35 +69,35 @@ $(document).on('turbolinks:load',function() {
 
       function top_report() {
         hideLoading('top');
-        $.getJSON("http://localhost:3000/admin/top_ten", {saloon_id: 1}, function(data){
+        $.getJSON("http://localhost:3000/admin/top_ten", {saloon_id: $('.google_chart').data('saloon')}, function(data){
           drawTop(data)
         });
       }
 
       function revenue_report() {
         hideLoading('top');
-        $.getJSON("http://localhost:3000/admin/total_revenue", {saloon_id: 1}, function(data){
+        $.getJSON("http://localhost:3000/admin/total_revenue", {saloon_id: $('.google_chart').data('saloon')}, function(data){
           drawRevenue(data)
         });
       }
 
       function day_revenue_report() {
         hideLoading('top');
-        $.getJSON("http://localhost:3000/admin/revenue_day", {saloon_id: 1, day: "14/11/2017"}, function(data){
+        $.getJSON("http://localhost:3000/admin/revenue_day", {saloon_id: $('.google_chart').data('saloon'), day: $('.google_chart').data('day')}, function(data){
           drawDayRevenue(data)
         });
       }
 
       function day_product_revenue_report() {
         hideLoading('top');
-        $.getJSON("http://localhost:3000/admin/revenue_day_product", {saloon_id: 1, day: "13/11/2017", product: 'Fon'}, function(data){
+        $.getJSON("http://localhost:3000/admin/revenue_day_product", {saloon_id: $('.google_chart').data('saloon'), day: $('.google_chart').data('day'), product: $('.google_chart').data('product')}, function(data){
           drawDayProductRevenue(data)
         });
       }
 
       function product_revenue_report() {
         hideLoading('top');
-        $.getJSON("http://localhost:3000/admin/revenue_by_product", {saloon_id: 1, product: 'Fon'}, function(data){
+        $.getJSON("http://localhost:3000/admin/revenue_by_product", {saloon_id: $('.google_chart').data('saloon'), product: $('.google_chart').data('product')}, function(data){
           drawProductRevenue(data)
         });
       }
@@ -114,6 +114,7 @@ $(document).on('turbolinks:load',function() {
 
         var options = {
           title: 'Cliente',
+          backgroundColor: { fill:'transparent' },
           tooltip: {
             text: 'percentage'
           },
@@ -145,6 +146,7 @@ $(document).on('turbolinks:load',function() {
         var options = {
           title: 'Lucro',
           sliceVisibilityThreshold: 0,
+          backgroundColor: { fill:'transparent' },
           tooltip: {
             text: 'percentage'
           },
@@ -179,6 +181,7 @@ $(document).on('turbolinks:load',function() {
         var options = {
           title: 'Lucro',
           sliceVisibilityThreshold: 0,
+          backgroundColor: { fill:'transparent' },
           tooltip: {
             text: 'percentage'
           },
@@ -213,6 +216,7 @@ $(document).on('turbolinks:load',function() {
         var options = {
           title: 'Lucro',
           sliceVisibilityThreshold: 0,
+          backgroundColor: { fill:'transparent' },
           tooltip: {
             text: 'percentage'
           },
@@ -245,6 +249,7 @@ $(document).on('turbolinks:load',function() {
         var options = {
           title: 'Lucro',
           sliceVisibilityThreshold: 0,
+          backgroundColor: { fill:'transparent' },
           tooltip: {
             text: 'percentage'
           },
