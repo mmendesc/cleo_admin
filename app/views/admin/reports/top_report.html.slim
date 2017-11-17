@@ -1,3 +1,15 @@
 .google_chart data-saloon="#{current_employee.saloon_id}"
   #top_ten_chart style=("width: 100%; height: 250px;")
 
+
+table#dtable.table.table-striped.table-bordered.table-hover.table-checkable.order-column
+  thead
+    tr
+      th Cliente
+      th Gasto
+  tbody
+    - @clients.each do |client|
+      tr
+        td = client[0]
+        td = client[1]
+

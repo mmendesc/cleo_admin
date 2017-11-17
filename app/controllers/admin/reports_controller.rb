@@ -3,7 +3,7 @@ class Admin::ReportsController < BaseAdminController
 
 
   def top_report
-
+    @clients = (ClientReport.new(Saloon.find(current_employee.saloon_id)).top_ten).to_a.reverse.to_h
   end
 
   def revenue
@@ -25,22 +25,22 @@ class Admin::ReportsController < BaseAdminController
   end
 
   def top_ten
-    render json: ClientReport.new(Saloon.first).top_ten
+    render json: ClientReport.new(Saloon.find(params[:saloon_id])).top_ten
   end
 
   def total_revenue
-    render json: RevenueReport.new(Saloon.first).total_revenue
+    render json: RevenueReport.new(Saloon.find(params[:saloon_id])).total_revenue
   end
 
   def revenue_by_day
-    render json: RevenueReport.new(Saloon.first).revenue_by_day(params[:day].to_date)
+    render json: RevenueReport.new(Saloon.find(params[:saloon_id])).revenue_by_day(params[:day].to_date)
   end
 
   def revenue_by_day_and_product
-    render json: RevenueReport.new(Saloon.first).revenue_by_day_and_product(params[:day].to_date,params[:product])
+    render json: RevenueReport.new(Saloon.find(params[:saloon_id])).revenue_by_day_and_product(params[:day].to_date,params[:product])
   end
 
   def revenue_by_product
-    render json: ProductReport.new(Saloon.first,params[:product]).product_revenue
+    render json: ProductReport.new(Saloon.find(params[:saloon_id]),params[:product]).product_revenue
   end
 end

@@ -111,16 +111,25 @@ $(document).on('turbolinks:load',function() {
 
       // draw
       function drawTop(data) {
+        nclients = Object.keys(data).length
 
         var options = {
-          title: 'Cliente',
+          title: 'Top 10 Clientes',
           backgroundColor: { fill:'transparent' },
           tooltip: {
             text: 'percentage'
           },
           slices: {
             0: {color: '#3366CC'},
-            1: {color: '#DC3912'}
+            1: {color: '#DC3912'},
+            2: {color: '#0C2948'},
+            3: {color: '#1C2947'},
+            4: {color: '#2C2946'},
+            5: {color: '#3C2945'},
+            6: {color: '#4C2944'},
+            7: {color: '#5C2943'},
+            8: {color: '#6C2942'},
+            9: {color: '#7C2941'},
           }
         };
 
@@ -179,7 +188,7 @@ $(document).on('turbolinks:load',function() {
       function drawDayRevenue(data) {
 
         var options = {
-          title: 'Lucro',
+          title: 'Lucro por Dia',
           sliceVisibilityThreshold: 0,
           backgroundColor: { fill:'transparent' },
           tooltip: {
@@ -214,7 +223,7 @@ $(document).on('turbolinks:load',function() {
       function drawDayProductRevenue(data) {
 
         var options = {
-          title: 'Lucro',
+          title: 'Lucro por Produto por Dia',
           sliceVisibilityThreshold: 0,
           backgroundColor: { fill:'transparent' },
           tooltip: {
@@ -247,7 +256,7 @@ $(document).on('turbolinks:load',function() {
       function drawProductRevenue(data) {
 
         var options = {
-          title: 'Lucro',
+          title: 'Lucro por Produto',
           sliceVisibilityThreshold: 0,
           backgroundColor: { fill:'transparent' },
           tooltip: {
