@@ -6,6 +6,9 @@ class ProductReport
   end
 
   def product_revenue
-    @saloon.product_revenue(@product)
+    revenue = {}
+    revenue['total'] = @saloon.product_revenue(@product)
+    revenue['quantity'] = @saloon.product_quantity_sold(@product)
+    revenue
   end
 end

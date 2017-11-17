@@ -69,4 +69,9 @@ class Saloon < ApplicationRecord
     Item.by_saloon(self).where(created_at: date.at_beginning_of_day..date.at_end_of_day).where(product_id: product.id).sum(:quantity)
   end
 
+  def product_quantity_sold(product)
+    product = Product.find_by(name: product)
+    Item.by_saloon(self).where(product_id: product.id).sum(:quantity)
+  end
+
 end

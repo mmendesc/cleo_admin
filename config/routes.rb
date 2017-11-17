@@ -18,13 +18,14 @@ Rails.application.routes.draw do
     get '/revenue' => 'reports#revenue', as: 'revenue'
     get '/day_revenue' => 'reports#day_revenue', as: 'day_revenue'
     get '/day_product_revenue' => 'reports#day_product_revenue', as: 'day_product_revenue'
+    get '/product_revenue' => 'reports#product_revenue', as: 'product_revenue'
 
     ## returns json
     get '/top_ten' => 'reports#top_ten', as: 'top_ten_clients'
     get '/total_revenue' => 'reports#total_revenue', as: 'total_revenue'
     get '/revenue_day' => 'reports#revenue_by_day', as: 'revenue_by_day'
     get '/revenue_day_product' => 'reports#revenue_by_day_and_product', as: 'revenue_by_day_and_product'
-    get '/product_revenue' => 'reports#product_revenue', as: 'product_revenue'
+    get '/revenue_by_product' => 'reports#revenue_by_product', as: 'revenue_by_product'
 
 
     get '/calendar' => 'pages#calendar', as: 'calendar'

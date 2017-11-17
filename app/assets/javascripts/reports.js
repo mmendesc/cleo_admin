@@ -14,6 +14,7 @@ $(document).on('turbolinks:load',function() {
         setRevenueCallback();
         setDayRevenueCallback();
         setDayProductRevenueCallback();
+        setProductRevenueCallback();
       }
 
       function setTopCallback(){
@@ -40,6 +41,12 @@ $(document).on('turbolinks:load',function() {
         }
       }
 
+      function setProductRevenueCallback(){
+        if ($('#product_revenue_chart').length){
+          google.charts.setOnLoadCallback(drawProductRevenueReport);
+        }
+      }
+
       function drawTopReport() {
         top_report();
       }
@@ -54,6 +61,10 @@ $(document).on('turbolinks:load',function() {
 
       function drawDayProductRevenueReport() {
         day_product_revenue_report();
+      }
+
+      function drawProductRevenueReport() {
+        product_revenue_report();
       }
 
       function top_report() {
@@ -79,8 +90,15 @@ $(document).on('turbolinks:load',function() {
 
       function day_product_revenue_report() {
         hideLoading('top');
-        $.getJSON("http://localhost:3000/admin/revenue_day_product", {saloon_id: 1, day: "13/11/2017", product: 'pRoduto1'}, function(data){
+        $.getJSON("http://localhost:3000/admin/revenue_day_product", {saloon_id: 1, day: "13/11/2017", product: 'Fon'}, function(data){
           drawDayProductRevenue(data)
+        });
+      }
+
+      function product_revenue_report() {
+        hideLoading('top');
+        $.getJSON("http://localhost:3000/admin/revenue_by_product", {saloon_id: 1, product: 'Fon'}, function(data){
+          drawProductRevenue(data)
         });
       }
 
@@ -219,6 +237,38 @@ $(document).on('turbolinks:load',function() {
         }
 
         var chart = new google.visualization.PieChart(document.getElementById('day_product_revenue_chart'));
+        chart.draw(data1, options);
+      }
+
+      function drawProductRevenue(data) {
+
+        var options = {
+          title: 'Lucro',
+          sliceVisibilityThreshold: 0,
+          tooltip: {
+            text: 'percentage'
+          },
+          slices: {
+            0: {color: '#3366CC'},
+            1: {color: '#DC3912'},
+          }
+        };
+
+        var data1 = new google.visualization.DataTable();
+        data1.addColumn('string', 'Sexo');
+        data1.addColumn('number', 'Quantidade');
+          data1.addRows([
+            ['Vendas',data.total],
+            ['Quantidade: ' + data.quantity , 0]
+            ]);
+
+        if (no_data(data)){
+          data1.addRows([
+          ['Nenhum Usuário registrado nesse período.',1]
+          ])
+        }
+
+        var chart = new google.visualization.PieChart(document.getElementById('product_revenue_chart'));
         chart.draw(data1, options);
       }
 

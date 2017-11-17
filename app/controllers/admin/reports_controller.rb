@@ -19,6 +19,10 @@ class Admin::ReportsController < BaseAdminController
 
   end
 
+  def product_revenue
+
+  end
+
   def top_ten
     render json: ClientReport.new(Saloon.first).top_ten
   end
@@ -35,7 +39,7 @@ class Admin::ReportsController < BaseAdminController
     render json: RevenueReport.new(Saloon.first).revenue_by_day_and_product(params[:day].to_date,params[:product])
   end
 
-  def product_revenue
+  def revenue_by_product
     render json: ProductReport.new(Saloon.first,params[:product]).product_revenue
   end
 end
