@@ -172,7 +172,7 @@ $(document).on('turbolinks:load',function() {
           data1.addRows([
             ['Vendas',data.sales],
             ['Serviços', data.services],
-            ['Total: ' + data.total , 0]
+            ['Total: ' + data.total + ' R$', 0]
             ]);
 
         if (no_data(data)){
@@ -226,6 +226,7 @@ $(document).on('turbolinks:load',function() {
           title: 'Lucro por Produto por Dia',
           sliceVisibilityThreshold: 0,
           backgroundColor: { fill:'transparent' },
+          pieSliceText: 'value',
           tooltip: {
             text: 'percentage'
           },
@@ -259,6 +260,7 @@ $(document).on('turbolinks:load',function() {
           title: 'Lucro por Produto',
           sliceVisibilityThreshold: 0,
           backgroundColor: { fill:'transparent' },
+          pieSliceText: 'value',
           tooltip: {
             text: 'percentage'
           },
