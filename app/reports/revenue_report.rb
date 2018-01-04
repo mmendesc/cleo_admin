@@ -27,4 +27,11 @@ class RevenueReport
     revenue
   end
 
+  def service_revenue
+    revenue = {}
+    revenue['total'] = @saloon.services_revenue
+    revenue['quantity'] = @saloon.services_quantity
+    revenue
+  end
+
 end

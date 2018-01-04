@@ -32,6 +32,10 @@ class Admin::ReportsController < BaseAdminController
     render json: RevenueReport.new(Saloon.find(params[:saloon_id])).total_revenue
   end
 
+  def total_services_revenue
+    render json: RevenueReport.new(Saloon.find(params[:saloon_id])).service_revenue
+  end
+
   def revenue_by_day
     render json: RevenueReport.new(Saloon.find(params[:saloon_id])).revenue_by_day(params[:day].to_date)
   end

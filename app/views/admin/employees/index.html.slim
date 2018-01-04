@@ -17,7 +17,10 @@ table#dtable.table.table-striped.table-bordered.table-hover.table-checkable.orde
       tr
         td = link_to "#{employee.name}", [:admin,employee]
         td = employee.email
-        td = employee.saloon.name
+        - if employee.role == 'master'
+          td
+        - else
+          td = employee.saloon.name
         td = employee.telephone
         td = employee.cellphone
         td = employee.birthdate

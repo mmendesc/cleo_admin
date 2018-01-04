@@ -74,4 +74,8 @@ class Saloon < ApplicationRecord
     Item.by_saloon(self).where(product_id: product.id).sum(:quantity)
   end
 
+  def services_quantity
+    Appointment.by_saloon(self).where("start_date < ?", Time.now + 1.hour).size
+  end
+
 end

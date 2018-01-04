@@ -15,6 +15,7 @@ $(document).on('turbolinks:load',function() {
         setDayRevenueCallback();
         setDayProductRevenueCallback();
         setProductRevenueCallback();
+        setServiceRevenueCallback();
       }
 
       function setTopCallback(){
@@ -47,6 +48,12 @@ $(document).on('turbolinks:load',function() {
         }
       }
 
+      function setServiceRevenueCallback(){
+        if ($('#service_revenue_chart').length){
+          google.charts.setOnLoadCallback(drawServiceRevenueReport);
+        }
+      }
+
       function drawTopReport() {
         top_report();
       }
@@ -65,6 +72,10 @@ $(document).on('turbolinks:load',function() {
 
       function drawProductRevenueReport() {
         product_revenue_report();
+      }
+
+      function drawServiceRevenueReport() {
+        service_revenue_report();
       }
 
       function top_report() {
@@ -99,6 +110,13 @@ $(document).on('turbolinks:load',function() {
         hideLoading('top');
         $.getJSON("http://localhost:3000/admin/revenue_by_product", {saloon_id: $('.google_chart').data('saloon'), product: $('.google_chart').data('product')}, function(data){
           drawProductRevenue(data)
+        });
+      }
+
+      function service_revenue_report() {
+        hideLoading('top');
+        $.getJSON("http://localhost:3000/admin/total_services_revenue", {saloon_id: $('.google_chart').data('saloon')}, function(data){
+          drawServiceRevenue(data)
         });
       }
 
@@ -285,6 +303,40 @@ $(document).on('turbolinks:load',function() {
         }
 
         var chart = new google.visualization.PieChart(document.getElementById('product_revenue_chart'));
+        chart.draw(data1, options);
+      }
+
+      function drawServiceRevenue(data) {
+
+        var options = {
+          title: 'Lucro por Serviços',
+          sliceVisibilityThreshold: 0,
+          backgroundColor: { fill:'transparent' },
+          pieSliceText: 'value',
+          tooltip: {
+            text: 'percentage'
+          },
+          slices: {
+            0: {color: '#3366CC'},
+            1: {color: '#DC3912'},
+          }
+        };
+
+        var data1 = new google.visualization.DataTable();
+        data1.addColumn('string', 'Total');
+        data1.addColumn('number', 'Valor');
+          data1.addRows([
+            ['Vendas',data.total],
+            ['Quantidade: ' + data.quantity , 0]
+            ]);
+
+        if (no_data(data)){
+          data1.addRows([
+          ['Nenhum Usuário registrado nesse período.',1]
+          ])
+        }
+
+        var chart = new google.visualization.PieChart(document.getElementById('service_revenue_chart'));
         chart.draw(data1, options);
       }
 
